@@ -7,7 +7,7 @@ int main()
     struct dirent *entry;
     int files = 0;
 
-    folder = opendir(".");
+    folder = opendir("./zipf");
     if(folder == NULL)
     {
         perror("Unable to read directory");
