@@ -32,7 +32,7 @@ int val_size = 32;
 int cache_th = 30;
 int client_id = 0;
 int iter = 40000;
-const char *ycsb_dir = "/data/caiqc/zipf";
+const char *ycsb_dir = "~/gam/dht/zipf";
 
 pthread_t *threads;
 pthread_mutex_t cnt_mutex = PTHREAD_MUTEX_INITIALIZER;    
