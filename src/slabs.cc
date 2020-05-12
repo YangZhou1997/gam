@@ -110,6 +110,7 @@ void* SlabAllocator::slabs_init(const size_t limit, const double factor,
   if (prealloc) {
     /* Allocate everything in a big chunk with malloc */
     //hack by zh
+    fprintf(stderr, "trying to allocate %lu byte memory...\n", limit);
     mem_base = (char*) mmap_malloc(mem_limit);
     if (mem_base != NULL) {
       dbprintf("allocate succeed\n");

@@ -247,7 +247,7 @@ int main(int argc, char* argv[]) {
   conf.master_port = port_master;
   conf.worker_ip = ip_worker;
   conf.worker_port = port_worker;
-  conf.size = (1UL << 34); // 16GB
+  conf.size = (1UL << 34) / 2; // 16GB
   conf.cache_th = (double)cache_th/100;
 
   GAlloc* alloc = GAllocFactory::CreateAllocator(&conf);

@@ -4,7 +4,7 @@ bin=`cd "$bin"; pwd`
 SRC_HOME=$bin/../test
 slaves=$bin/slaves
 log_file=$bin/log
-master_ip=apt181.apt.emulab.net
+master_ip=node0
 master_port=1231
 
 run() {

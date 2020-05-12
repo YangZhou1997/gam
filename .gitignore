@@ -1,5 +1,6 @@
 **/*.o
 **/*.a
+**/*.log
 database/test/hash_index_test
 database/test/tpcc_populate_test
 database/tpcc/tpcc
