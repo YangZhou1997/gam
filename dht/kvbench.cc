@@ -31,7 +31,7 @@ int get_ratio = 100;
 int val_size = 32;
 int cache_th = 30;
 int client_id = 0;
-int iter = 40000;
+int iter = 400000;
 const char *ycsb_dir = "/users/yangzhou/gam/dht/zipf";
 // opendir cannot use ~/gam/dht/zipf
 
@@ -75,6 +75,7 @@ void populate(FILE * fp, kvClient* cli) {
   int cnt = 0;
   while(cnt++ < iter && fgets(key, KEY_SIZE, fp)) {
     key[strlen(key) - 1] = 0;
+    // fprintf(stdout, "%s\n", key);
     cli->put(key, value);
     if (finished.fetch_add(1, std::memory_order_relaxed) % REPORT == 0) {
       current = mstime();
@@ -134,6 +135,7 @@ void benchmark(FILE* fp, kvClient* cli) {
 
 void* do_work(void* fname) {
   FILE *fp = fopen((char*)fname, "r");
+  printf("tracefile: %s\n", fname);
   if (!fp) {
     perror("fopen:");
     exit(1);
@@ -271,7 +273,7 @@ int main(int argc, char* argv[]) {
     {
       do {
         ent = readdir(dir);
-      } while (ent && ent->d_type != DT_REG);
+      } while ((ent && ent->d_type != DT_REG) || ent->d_name[0] == '.');
 
       if (!ent) break;
 
